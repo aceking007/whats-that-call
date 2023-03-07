@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game</title>
+    <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+  </head>
+  <body class="container-fluid text-center">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <span class="col-3"></span>
+      <span style="font-size: 44px;" class="mt-4 col-6">Round {{curr_round}} of {{rounds}}</span>
+      <span style="font-size: 30px; color: green;" class="col-3"></span>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      {% if curr_round == 1 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; </span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 2 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; </span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 3 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679;</span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 4 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; </span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 5 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; &#9679; </span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 6 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; </span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 7 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; </span> <span style="color: gray; font-size: 24px;">&#9679; &#9679; &#9679;</span>
+      {% elif curr_round == 8 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span> <span style="color: gray; font-size: 24px;">&#9679; &#9679;</span>
+      {% elif curr_round == 9 %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span> <span style="color: gray; font-size: 24px;">&#9679;</span>
+      {% else %}
+          <span style="color: green; font-size: 24px; margin-right: 5px;">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</span>
+      {% endif %}
+    </div>
+    <audio class="my-5" src="{{url_for('static', filename='/' + sampled_folder + '/' + answer + '.mp3')}}" controls autoplay></audio>
+    <form class="d-flex flex-column" action="" method="post">
+      <div class="d-flex justify-content-around">
+        <div class="d-flex flex-column text-center">
+          <img id="{{option1}}-img" style="padding: 5px;" src="{{url_for('static', filename='/' + sampled_folder + '/' + option1 + '.jpg')}}" alt="{{option1}}" width="300" height="300"><br>
+          <div>
+            <input type="radio" style="height: 20px; width: 30px; margin-left: -40px; margin-right: 10px;" name="options" id="{{option1}}" value="{{option1}}">
+            <span style="font-size: 24px; font-weight: bold;">{{option1}}</span>
+          </div>
+        </div>
+        <div class="d-flex flex-column text-center">
+          <img id="{{option2}}-img" style="padding: 5px;" src="{{url_for('static', filename='/' + sampled_folder + '/' + option2 + '.jpg')}}" alt="{{option2}}" width="300" height="300"><br>
+          <div>
+            <input type="radio" style="height: 20px; width: 30px; margin-left: -40px; margin-right: 10px;" name="options" id="{{option2}}" value="{{option2}}">
+            <span style="font-size: 24px; font-weight: bold;">{{option2}}</span>
+          </div>
+        </div>
+        <div class="d-flex flex-column text-center">
+          <img id="{{option3}}-img" style="padding: 5px;" src="{{url_for('static', filename='/' + sampled_folder + '/' + option3 + '.jpg')}}" alt="{{option3}}" width="300" height="300"><br>
+          <div>
+            <input type="radio" style="height: 20px; width: 30px; margin-left: -40px; margin-right: 10px;" name="options" id="{{option3}}" value="{{option3}}">
+            <span style="font-size: 24px; font-weight: bold;">{{option3}}</span>
+          </div>
+        </div>
+      </div>
+      <input id="answer" type="hidden" name="answer" value="{{answer}}">
+      <div class="d-none mt-5" style="font-size: 24px;" id="correct-div">
+        <span style="color: green; font-weight: bold;">Correct!</span><br>
+        {% if fact != " " %}
+        <span>Did you know? <br>{{fact}}</span>
+        {% else %}
+        {% endif %}
+      </div>
+      <div class="d-none mt-5" style="font-size: 24px;" id="incorrect-div">
+        <span style="color: red; font-weight: bold;">Incorrect!</span><br>
+        <span>The correct answer is <strong>{{answer}}</strong>.</span>
+      </div>
+      <div class="my-5">
+        <input id="submit" style="font-size: 24px; width: 200px;" class="btn btn-success" type="button" value="Submit">
+        <input id="continue" type="submit" class="d-none btn btn-secondary" value="Continue">
+      </div>
+    </form>
+    <script src="{{url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
+    <script>
+      document.getElementById("submit").onclick = function (){
+        var chosen = document.querySelector('input[name="options"]:checked').value;
+        var ans = document.getElementById('answer').value;
+        var rBtns = document.querySelectorAll('input[name="options"]');
+        for (var i = 0; i < rBtns.length; i++){
+          rBtns[i].hidden = true;
+        }
+        if (chosen == ans) {
+          document.getElementById('correct-div').classList.toggle("d-none");
+          document.getElementById('submit').classList.toggle("d-none");
+          document.getElementById('continue').classList.toggle("d-none");
+          document.getElementById(chosen + '-img').style.border = "thick solid green";
+        } else {
+          document.getElementById('incorrect-div').classList.toggle("d-none");
+          document.getElementById('submit').classList.toggle("d-none");
+          document.getElementById('continue').classList.toggle("d-none");
+          document.getElementById(chosen + '-img').style.border = "thick solid red";
+          document.getElementById(ans + '-img').style.border = "thick solid green";
+        }
+      }
+    </script>
+  </body>
+</html>

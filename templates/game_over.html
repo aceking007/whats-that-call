@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game</title>
+    <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+  </head>
+  {% if score > 8 %}
+  <body class="container-fluid" style="margin-top: 25vh; background-image: url(/static/7.webp); background-size: cover;">
+  {% else %}
+  <body class="container-fluid" style="margin-top: 25vh; background-image: url(/static/30.webp); background-size: cover;">
+  {% endif %}
+    <div class="d-flex flex-column text-center">
+      <span style="font-size: 44px; font-weight: bold; color: white;">Game Over</span>
+      <span style="font-size: 30px; color: white;">Score: {{score}}/10</span><br>
+      <div>
+        <a class="btn btn-danger" href="/">Play again</a>
+      </div>
+    </div>
+    <div style="margin-top: 200px; color: white;" class="d-flex flex-column justify-content-center align-items-center">
+      <span style="font-weight: bold; font-size: 22px;">Contributors:</span>
+      <div class="text-left d-flex flex-column">
+        <span><strong>Birds:</strong>RB Lab, CES, IISc</span>
+        <span><strong>Frogs:</strong> EV Lab, CES, IISc</span>
+        <span><strong>Insects:</strong> RB Lab, CES, IISc</span>
+        <span><strong>Mammals:</strong> SB Lab, CES, IISc</span>
+      </div>
+    </div>
+    <script src="{{url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
+  </body>
+</html>

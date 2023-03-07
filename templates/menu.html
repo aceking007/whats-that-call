@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game Menu</title>
+    <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+  </head>
+  <body class="container-fluid d-flex flex-column justify-content-around p-5" style="background-image: url(/static/6.JPG); background-size: cover;background-repeat: no-repeat; background-position: top;">
+    <img src="{{url_for('static', filename='ces_logo_2.png')}}" width="400" height="300" style="margin-left: 50px;"><br>
+    <span style="font-size: 75px; color: #f0f0f0;">What's that call?</span>
+    <span style="font-size: 24px; color: #f0f0f0;">Meows, Barks, Grunts, Screeches, Croaks, Chirps ... <br>Can you identify them all?</span>
+    <span></span>
+    <form action="" method="post" class="d-flex flex-column" style="margin-left: 150px;">
+      <!-- <h4 for="rounds">Choose number of rounds:</h4> -->
+      <div>
+        <select name="rounds" id="rounds" hidden>
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <input class="btn btn-primary" style="width: 200px; font-size: 24px;" type="submit" value="Let's Go">
+      </div>
+    </form>
+    <script src="{{url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
+  </body>
+</html>
