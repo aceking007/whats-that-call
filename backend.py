@@ -25,7 +25,7 @@ def make_fact_dict():
             f_dict[row[0]] = row[1]
     return f_dict
 
-fact_dict = make_fact_dict()
+# fact_dict = make_fact_dict()
 # print(fact_dict)
 
 def get_animals(animals_list):
